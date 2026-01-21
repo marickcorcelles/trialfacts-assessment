@@ -7,101 +7,327 @@
     <title>Trialfacts Clinical Study</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        /* --- General Resets --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
-            /* Requirement: Use Roboto font  */
             line-height: 1.6;
             margin: 0;
             padding: 0;
             color: #333;
+            background-color: #fff;
         }
 
-        .container {
-            max-width: 800px;
+        /* --- Layout Containers --- */
+        .page-wrapper {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         h1 {
-            /* Requirement: Main title must use h1  */
-            font-size: 2.5em;
-            color: #2c3e50;
-            margin-bottom: 20px;
+            font-size: 2.2em;
+            color: #000;
+            margin-bottom: 40px;
+            font-weight: 700;
+            line-height: 1.2;
         }
 
-        h3 {
-            /* Requirement: Sub-headers must use h3  */
-            font-size: 1.5em;
-            color: #2c3e50;
-            margin-top: 25px;
-            margin-bottom: 10px;
+        /* Flexbox for 2-Column Layout */
+        .content-container {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
         }
 
-        p {
+        /* --- Left Sidebar Styling --- */
+        .sidebar {
+            flex: 0 0 250px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .contents-title {
+            font-weight: 700;
+            font-size: 1.1em;
             margin-bottom: 15px;
+            display: block;
+        }
+
+        .contents-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+
+        .contents-list li {
+            margin-bottom: 8px;
+        }
+
+        .contents-list a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.2s;
+        }
+
+        .contents-list a:hover {
+            color: #e74c3c;
+        }
+
+        /* "Next Steps" Card */
+        .next-steps-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background-color: white;
+            text-align: center;
+        }
+
+        .next-steps-title {
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: block;
+            text-align: left;
+        }
+
+        .steps-list {
+            text-align: left;
+            font-size: 0.85em;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .steps-list li {
+            margin-bottom: 5px;
         }
 
         .cta-button {
-            display: inline-block;
-            background-color: #e74c3c;
-            /* Adjust color to match reference image */
+            display: block;
+            background-color: #dc3545;
             color: white;
-            padding: 15px 30px;
+            padding: 12px 0;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            margin-top: 20px;
+            font-weight: 700;
+            border-radius: 25px;
             text-align: center;
+            width: 100%;
+            transition: background-color 0.3s;
+            font-size: 0.95em;
         }
 
         .cta-button:hover {
             background-color: #c0392b;
         }
 
-        .map-container {
-            margin-top: 40px;
+        /* --- Right Main Content Styling --- */
+        .main-content {
+            flex: 1;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #000;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* About Section with Image */
+        .about-section-inner {
+            display: flex;
+            gap: 20px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 0 0 250px;
+        }
+
+        .about-image img {
             width: 100%;
-            height: 400px;
+            border-radius: 4px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Research Centre Logos */
+        .research-centre-block {
+            margin-bottom: 25px;
+        }
+
+        /* Updated: New styling for the logo images */
+        .research-logo {
+            display: block;
+            max-width: 160px;
+            /* Controls the size of the logo */
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .uni-name {
+            font-weight: 700;
+            text-decoration: underline;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
             background-color: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                order: 2;
+                width: 100%;
+                position: static;
+            }
+
+            .about-section-inner {
+                flex-direction: column-reverse;
+            }
+
+            .about-image {
+                flex: 0 0 auto;
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Research Study Recruitment</h1>
 
-        <p>Trialfacts supports medical research by recruiting patients for clinical studies...</p>
+    <div class="page-wrapper">
+        <h1>Help Improve Diabetes Care: Explore a Potential New Treatment!</h1>
 
-        <h3>About the Study</h3>
-        <p>Struggling with type 2 diabetes? Join this research study to explore a new
-            potential treatment that aims to lower blood sugar and body weight. With
-            type 2 diabetes significantly increasing the risk of cardiovascular disease,
-            finding effective treatments is crucial. This study will compare different
-            doses of a new treatment to see how well they help manage blood sugar
-            and reduce body weight.
+        <div class="content-container">
 
-            Participants will play a vital role in potentially transforming diabetes care
-            while receiving close health monitoring and support. If you have type 2 diabetes, your involvement could
-            help pave
-            the way for better treatments and improved health outcomes. Join researchers in making a difference!
-        </p>
+            <aside class="sidebar">
+                <span class="contents-title">Contents</span>
+                <ul class="contents-list">
+                    <li><a href="#about">About the Study</a></li>
+                    <li><a href="#who">Who Can Participate?</a></li>
+                    <li><a href="#centre">About the Research Centre</a></li>
+                    <li><a href="#location">Study Location</a></li>
+                </ul>
 
-        <h3>Who Can Participate?</h3>
-        <p>•People aged 18-75 who are diagnosed with type 2 diabetes mellitus for at least greater than 180 days
-            •Must have been on a stable daily dose of Metformin with or without SGLT2 inhibitors such as Jardiance,
-            Jardiamet, Forxiga and Xigduo XR, etc.
-            •Must have HbAlc of 7.5% -10%
-            •Must not have been diagnosed with diabetic retinopathy or maculopathy</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUaGwKlaBvVzL30H9E7eOZdmOaqB8Jok2tK7FluFIB3iW6bw/viewform"
-            class="cta-button">Click Here to Check Eligibility</a>
+                <div class="next-steps-card">
+                    <span class="next-steps-title">Next Steps</span>
+                    <ol class="steps-list">
+                        <li>Complete the study questionnaire</li>
+                        <li>Understand if you're eligible to participate</li>
+                    </ol>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUaGwKlaBvVzL30H9E7eOZdmOaqB8Jok2tK7FluFIB3iW6bw/viewform"
+                        class="cta-button">Click Here</a>
+                </div>
+            </aside>
 
-        <h3>Location</h3>
-        <div class="map-container">
-            <iframe src="YOUR_GOOGLE_MAP_EMBED_CODE_HERE" width="100%" height="400" style="border:0;" allowfullscreen=""
-                loading="lazy"></iframe>
+
+            <main class="main-content">
+
+                <section id="about">
+                    <h3>About the Study</h3>
+                    <div class="about-section-inner">
+                        <div class="about-text">
+                            <p>Struggling with type 2 diabetes? Join this research study to explore a new potential
+                                treatment that aims to lower blood sugar and body weight. With type 2 diabetes
+                                significantly increasing the risk of cardiovascular disease, finding effective
+                                treatments is crucial.</p>
+                            <p>This study will compare different doses of a new treatment to see how well they help
+                                manage blood sugar and reduce body weight.</p>
+                            <p>Participants will play a vital role in potentially transforming diabetes care while
+                                receiving close health monitoring and support. If you have type 2 diabetes, your
+                                involvement could help pave the way for better treatments and improved health outcomes.
+                                Join researchers in making a difference!</p>
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=300&q=80"
+                                alt="Smiling senior man">
+                        </div>
+                    </div>
+                </section>
+
+                <section id="who">
+                    <h3>Who Can Participate?</h3>
+                    <ul>
+                        <li>People aged 18-75 who are diagnosed with type 2 diabetes mellitus for at least greater than
+                            180 days</li>
+                        <li>Must have been on a stable daily dose of Metformin with or without SGLT2 inhibitors such as
+                            Jardiance, Jardiamet, Glyxambi, Forxiga, Qtern and Xigduo XR, etc.</li>
+                        <li>Must have HbA1c of 7.5% - 10%</li>
+                        <li>Must not have been diagnosed with diabetic retinopathy or maculopathy</li>
+                    </ul>
+                </section>
+
+                <section id="centre">
+                    <h3>About the Research Centre</h3>
+
+                    <div class="research-centre-block">
+                        <img src="Macquarie-University-banner.png" alt="Macquarie University Logo"
+                            class="research-logo">
+
+                        <span class="uni-name">Macquarie University</span>
+                        <p>Macquarie University is a leading public research university renowned for its commitment to
+                            academic excellence and innovative research. Offering a wide range of programs across
+                            disciplines such as business, education, law, science, and the arts, the university is
+                            dedicated to fostering knowledge and embracing different views.</p>
+                    </div>
+
+                    <div class="research-centre-block">
+                        <img src="Main_buildings_at_Box_Hill_Hospital_from_Nelson_Road_in_Box_Hill,_Melbourne.jpg"
+                            alt="Box Hill Hospital Logo" class="research-logo">
+
+                        <span class="uni-name">Box Hill Hospital</span>
+                        <p>Box Hill Hospital in Melbourne is one of the seven hospitals that are governed within the
+                            Eastern Health network which provides health care services across the Eastern metropolitan
+                            area of Victoria.</p>
+                        <p style="font-size: 0.9em; margin-top: 15px;">This study has been reviewed and approved by the
+                            HREC for the sites indicated above.</p>
+                    </div>
+                </section>
+
+                <section id="location">
+                    <h3>Study Location</h3>
+                    <div class="map-container">
+                        <iframe style="border: 0;"
+                            src="https://www.google.com/maps/d/embed?mid=1yMhEKfpGzi1ZlW2SaAxB2UzYbCJn-A4&ehbc=2E312F"
+                            width="100%" height="100%" allowfullscreen="allowfullscreen"></iframe>
+                    </div>
+                </section>
+
+            </main>
         </div>
     </div>
+
 </body>
 
 </html>
