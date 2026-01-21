@@ -10,15 +10,15 @@ The main component of this repository is a responsive web page designed to recru
 
 ### Key Features & Requirements Implemented
 * **Semantic HTML Structure:**
-    * [cite_start]Main page title uses the `<h1>` tag[cite: 20].
-    * [cite_start]All sub-headers use `<h3>` tags[cite: 21].
+    * Main page title uses the `<h1>` tag.
+    * All sub-headers use `<h3>` tags.
 * **Typography:**
-    * [cite_start]"Roboto" is used as the primary font for the entire page[cite: 22].
+    * "Roboto" is used as the primary font for the entire page.
 * **Functionality:**
-    * [cite_start]**Call to Action:** The "Click Here" button is configured to redirect users to the recruitment questionnaire[cite: 23].
-    * [cite_start]**Map Integration:** Includes an embedded Google Map displaying the location of the research site, using the specific embed code provided[cite: 24].
+    * **Call to Action:** The "Click Here" button is configured to redirect users to the recruitment questionnaire.
+    * **Map Integration:** Includes an embedded Google Map displaying the location of the research site, using the specific embed code provided.
 * **Deployment:**
-    * [cite_start]The project is hosted and accessible via GitHub Pages[cite: 26].
+    * The project is hosted and accessible via GitHub Pages.
 
 ## 🛠️ Technologies Used
 * **HTML5**
