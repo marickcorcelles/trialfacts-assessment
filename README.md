@@ -6,7 +6,7 @@ This repository contains the technical assessment submission for the Junior Tech
 **[View the Web Ad Here](https://marickcorcelles.github.io/trialfacts-assessment/)**
 
 ## 📄 Project Overview
-The main component of this repository is a responsive web page designed to recruit participants for a diabetes research study. [cite_start]The page was built to match the provided reference layout as closely as possible[cite: 17].
+The main component of this repository is a responsive web page designed to recruit participants for a diabetes research study. The page was built to match the provided reference layout as closely as possible.
 
 ### Key Features & Requirements Implemented
 * **Semantic HTML Structure:**
